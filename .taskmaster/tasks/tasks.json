@@ -1,0 +1,119 @@
+{
+  "tasks": [],
+  "metadata": {
+    "projectName": "Hello World Landing Page",
+    "createdAt": "2025-12-29T22:30:00.000Z",
+    "version": "1.0.0"
+  },
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Create project structure and base HTML",
+        "description": "Set up the file structure and create the semantic HTML5 skeleton for the landing page with proper meta tags and accessibility features",
+        "details": "Create the following files and directories:\n- index.html (main entry point)\n- css/styles.css\n- css/themes.css\n- js/main.js\n- js/theme.js\n- js/form.js\n- assets/icons/ (directory)\n\nIn index.html:\n- Use semantic HTML5 elements (<header>, <nav>, <main>, <section>, <footer>)\n- Include proper meta tags (viewport, description, charset UTF-8)\n- Set up sections: hero, features, about, contact, footer\n- Include navigation with logo, links, and hamburger menu structure\n- Add theme toggle button in navigation\n- Link all CSS and JS files with proper defer/async attributes\n- Ensure proper heading hierarchy (h1 > h2 > h3)\n- Add ARIA labels and roles for accessibility\n- Include skip-to-content link for keyboard navigation",
+        "testStrategy": "Validate HTML with W3C validator. Check semantic structure using browser DevTools. Verify all files are properly linked. Test keyboard navigation using Tab key. Verify heading hierarchy follows WCAG guidelines.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement CSS theme system with custom properties",
+        "description": "Create the theme system using CSS custom properties for light and dark modes with smooth transitions",
+        "details": "In css/themes.css:\n- Define CSS custom properties in :root for light theme:\n  --primary: #3B82F6, --secondary: #8B5CF6, --bg: #FFFFFF, --text: #1F2937, --accent: #10B981\n- Define dark theme properties in [data-theme='dark']:\n  --primary: #60A5FA, --secondary: #A78BFA, --bg: #111827, --text: #F9FAFB, --accent: #34D399\n- Add transition property for smooth theme switching: transition: background-color 0.3s ease, color 0.3s ease\n- Set up typography variables: --font-heading: Inter, system-ui; --font-body: Inter, system-ui\n- Define spacing variables: --section-padding: 80px, --container-max: 1200px, --card-gap: 24px\n\nApply color-scheme meta tag to HTML for native browser theme support",
+        "testStrategy": "Toggle data-theme attribute manually in DevTools to verify smooth transitions. Check all color variables are applied correctly. Verify contrast ratios meet WCAG AA standards using browser accessibility tools.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Style navigation bar with sticky positioning and mobile responsiveness",
+        "description": "Implement fixed/sticky navigation with responsive hamburger menu and smooth transitions",
+        "details": "In css/styles.css:\n- Create sticky navigation: position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px)\n- Use Flexbox for nav layout: display: flex; justify-content: space-between; align-items: center\n- Style navigation links with hover effects and active states\n- Implement hamburger menu icon (3 lines using CSS: ::before, ::after, and element itself)\n- Create mobile menu overlay: position: fixed; transform: translateX(100%); transition: transform 0.3s ease\n- Add .menu-open class to toggle menu: transform: translateX(0)\n- Media query @media (max-width: 768px): hide desktop nav, show hamburger\n- Add smooth scroll behavior: html { scroll-behavior: smooth }\n- Style theme toggle button as icon button with transition effects",
+        "testStrategy": "Test sticky behavior on scroll. Verify hamburger menu opens/closes smoothly on mobile (use DevTools responsive mode). Check navigation links scroll to correct sections. Test keyboard navigation through nav items.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Build hero section with gradient text and animated background",
+        "description": "Create visually striking hero section with animated elements and call-to-action",
+        "details": "In css/styles.css for hero section:\n- Full viewport height: min-height: 100vh; display: flex; align-items: center; justify-content: center\n- Gradient text for heading: background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text\n- Font size: clamp(2.5rem, 8vw, 6rem) for responsive scaling\n- Animated background using CSS keyframes:\n  @keyframes gradient { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }\n  background: linear-gradient(-45deg, gradients); background-size: 400% 400%; animation: gradient 15s ease infinite\n- Alternatively, create particle effect using CSS pseudo-elements or JavaScript canvas\n- Style CTA button: padding: 1rem 2.5rem; border-radius: 50px; background: var(--accent); transition: transform 0.2s, box-shadow 0.2s\n- Hover effect: transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2)\n- Add fade-in animation on page load: @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }",
+        "testStrategy": "Verify gradient text renders correctly across browsers (Chrome, Firefox, Safari). Test animation performance (should be 60fps). Check responsive text sizing on various screen sizes. Verify CTA button scrolls to features section.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Create features section with grid layout and hover effects",
+        "description": "Build responsive feature cards grid with icons, hover animations, and accessibility",
+        "details": "In css/styles.css:\n- Container: max-width: var(--container-max); margin: 0 auto; padding: var(--section-padding) 2rem\n- CSS Grid layout: display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--card-gap)\n- Feature card styling:\n  background: var(--card-bg); border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s\n  box-shadow: 0 4px 6px rgba(0,0,0,0.1)\n- Hover effect: transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.15)\n- Icon container: width: 64px; height: 64px; border-radius: 12px; background: gradient; display: flex; align-items: center; justify-content: center\n- Create 4 feature cards: Fast Performance, Responsive Design, Modern Stack, Easy Integration\n- Use SVG icons (inline or from assets/icons/)\n- Ensure cards have focus states for keyboard navigation: outline: 2px solid var(--primary); outline-offset: 4px",
+        "testStrategy": "Test grid responsiveness at various breakpoints (320px, 768px, 1024px, 1440px). Verify hover effects are smooth. Check focus indicators are visible when tabbing. Test with screen reader to ensure cards are properly announced.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement about section with animated counters and typing effect",
+        "description": "Create about section with text animation and JavaScript-powered statistics counters",
+        "details": "HTML structure:\n- Section with max-width container\n- Heading, description paragraph, and stats grid (3 columns)\n- Each stat has number and label\n\nIn css/styles.css:\n- Stats grid: display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem\n- Stat number: font-size: 3rem; font-weight: bold; color: var(--primary)\n- Typing effect container with cursor animation\n\nIn js/main.js:\n- Intersection Observer to trigger animations when section is visible:\n  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); } }) }, { threshold: 0.5 })\n- Counter animation function:\n  function animateCounters() {\n    const counters = document.querySelectorAll('.stat-number');\n    counters.forEach(counter => {\n      const target = +counter.dataset.target;\n      const increment = target / 100;\n      let current = 0;\n      const updateCounter = () => {\n        current += increment;\n        if (current < target) {\n          counter.textContent = Math.ceil(current);\n          requestAnimationFrame(updateCounter);\n        } else { counter.textContent = target; }\n      };\n      updateCounter();\n    });\n  }\n- Typing effect using setInterval to add characters one by one",
+        "testStrategy": "Scroll to about section and verify counters animate from 0 to target. Test typing effect displays correctly. Verify animations don't trigger multiple times. Check performance with DevTools Performance tab. Test with reduced motion preference (prefers-reduced-motion media query).",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Build contact form with validation and loading states",
+        "description": "Create functional contact form with client-side validation, error handling, and simulated submission",
+        "details": "HTML form structure:\n- Form with name, email, message fields\n- Each field wrapped in div with label and input/textarea\n- Submit button\n- Success/error message container (hidden by default)\n\nIn css/styles.css:\n- Form styling: max-width: 600px; margin: 0 auto\n- Input/textarea: width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 8px; transition: border-color 0.3s\n- Focus state: border-color: var(--primary); outline: none\n- Error state: .error { border-color: #EF4444 } .error-message { color: #EF4444; font-size: 0.875rem }\n- Button loading state: .loading { opacity: 0.6; cursor: not-allowed } with spinner animation\n\nIn js/form.js:\n- Form validation function:\n  function validateForm(formData) {\n    const errors = {};\n    if (!formData.name.trim()) errors.name = 'Name is required';\n    if (!formData.email.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/)) errors.email = 'Valid email required';\n    if (formData.message.length < 10) errors.message = 'Message must be at least 10 characters';\n    return errors;\n  }\n- Form submit handler:\n  form.addEventListener('submit', async (e) => {\n    e.preventDefault();\n    const formData = new FormData(e.target);\n    const errors = validateForm(Object.fromEntries(formData));\n    if (Object.keys(errors).length > 0) { displayErrors(errors); return; }\n    showLoading();\n    await simulateSubmission(); // setTimeout 1500ms\n    showSuccess();\n    form.reset();\n  })\n- Real-time validation on blur events",
+        "testStrategy": "Test validation for empty fields, invalid email format, short messages. Verify error messages display correctly. Test loading state appears during submission. Verify success message shows and form resets. Test keyboard navigation and accessibility with screen reader.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement theme toggle with localStorage persistence",
+        "description": "Create fully functional dark/light mode toggle that persists user preference across sessions",
+        "details": "In js/theme.js:\n- Initialize theme on page load:\n  const currentTheme = localStorage.getItem('theme') || 'light';\n  document.documentElement.setAttribute('data-theme', currentTheme);\n- Toggle function:\n  function toggleTheme() {\n    const currentTheme = document.documentElement.getAttribute('data-theme');\n    const newTheme = currentTheme === 'light' ? 'dark' : 'light';\n    document.documentElement.setAttribute('data-theme', newTheme);\n    localStorage.setItem('theme', newTheme);\n    updateToggleButton(newTheme);\n  }\n- Respect system preference if no saved preference:\n  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;\n  const initialTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');\n- Update toggle button icon/text based on current theme\n- Add event listener to theme toggle button: themeToggle.addEventListener('click', toggleTheme)\n\nIn css/styles.css:\n- Transition all theme-dependent properties: transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease\n- Style toggle button with icon (sun/moon) that rotates on toggle",
+        "testStrategy": "Toggle theme and verify localStorage is updated. Close and reopen browser to verify persistence. Test system preference detection by changing OS theme. Verify smooth transitions between themes. Test with DevTools Application tab to inspect localStorage.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-12-29T22:45:59.829Z",
+      "updated": "2025-12-29T22:45:59.829Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
