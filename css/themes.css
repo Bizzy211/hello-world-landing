@@ -1,0 +1,126 @@
+/* ========================================
+   Hello World - Theme System
+   CSS Custom Properties for Light/Dark Modes
+   ======================================== */
+
+/* Light Theme (Default) */
+:root {
+  /* Primary Colors */
+  --primary: #3B82F6;
+  --primary-rgb: 59, 130, 246;
+  --secondary: #8B5CF6;
+  --secondary-rgb: 139, 92, 246;
+  --accent: #10B981;
+  --accent-rgb: 16, 185, 129;
+
+  /* Background Colors */
+  --bg: #FFFFFF;
+  --bg-secondary: #F3F4F6;
+  --bg-tertiary: #E5E7EB;
+
+  /* Text Colors */
+  --text: #1F2937;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+
+  /* Card & UI */
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color-lg: rgba(0, 0, 0, 0.15);
+
+  /* State Colors */
+  --error: #EF4444;
+  --success: #10B981;
+  --warning: #F59E0B;
+
+  /* Gradient */
+  --gradient-start: #3B82F6;
+  --gradient-end: #8B5CF6;
+  --gradient: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+
+  /* Typography */
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', Consolas, Monaco, 'Courier New', monospace;
+
+  /* Spacing */
+  --section-padding: 80px;
+  --container-max: 1200px;
+  --card-gap: 24px;
+  --nav-height: 80px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Color scheme for native elements */
+  color-scheme: light;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Primary Colors */
+  --primary: #60A5FA;
+  --primary-rgb: 96, 165, 250;
+  --secondary: #A78BFA;
+  --secondary-rgb: 167, 139, 250;
+  --accent: #34D399;
+  --accent-rgb: 52, 211, 153;
+
+  /* Background Colors */
+  --bg: #111827;
+  --bg-secondary: #1F2937;
+  --bg-tertiary: #374151;
+
+  /* Text Colors */
+  --text: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-muted: #9CA3AF;
+
+  /* Card & UI */
+  --card-bg: #1F2937;
+  --border: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color-lg: rgba(0, 0, 0, 0.4);
+
+  /* Gradient */
+  --gradient-start: #60A5FA;
+  --gradient-end: #A78BFA;
+
+  /* Color scheme for native elements */
+  color-scheme: dark;
+}
+
+/* Smooth theme transitions for all elements */
+*,
+*::before,
+*::after {
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+/* Disable transitions on page load to prevent flash */
+.preload * {
+  transition: none !important;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
